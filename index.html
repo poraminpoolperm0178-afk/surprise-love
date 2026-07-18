@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 10 Months ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9ecf,#ffd6e8);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+.card{
+background:#fff;
+padding:25px;
+border-radius:20px;
+width:90%;
+max-width:420px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+h1{
+color:#ff4081;
+margin-bottom:15px;
+}
+
+input{
+width:90%;
+padding:12px;
+font-size:18px;
+border:2px solid pink;
+border-radius:10px;
+text-align:center;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:#ff4081;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e91e63;
+}
+
+#secret{
+display:none;
+}
+
+img{
+width:100%;
+border-radius:15px;
+margin-top:15px;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:24px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div id="login">
+
+<h1>💖 มีเซอร์ไพรส์สำหรับอ้วน 💖</h1>
+
+<p>ใส่รหัสเพื่อเปิดความลับ ❤️</p>
+
+<br>
+
+<input id="pass" type="password" placeholder="กรอกรหัส">
+
+<br>
+
+<button onclick="check()">เปิดเซอร์ไพรส์</button>
+
+<p id="msg" style="color:red;margin-top:10px;"></p>
+
+</div>
+
+<div id="secret">
+
+<h1>Happy 10 Months ❤️</h1>
+
+<p id="text" style="margin-bottom:15px;"></p>
+
+<img id="slide" src="1.jpg">
+
+</div>
+
+</div>
+
+<script>
+
+const password="191025";
+
+function check(){
+
+let p=document.getElementById("pass").value;
+
+if(p===password){
+
+document.getElementById("login").style.display="none";
+document.getElementById("secret").style.display="block";
+
+typeWriter();
+
+startSlide();
+
+setInterval(createHeart,300);
+
+}else{
+
+document.getElementById("msg").innerHTML="🥺 รหัสไม่ถูกนะอ้วน";
+
+}
+
+}
+
+const message=`ครบรอบ10เดือนแล้วนะอ้วน 💕
+
+เค้ารักเธอที่สุดในโลกกกกกก ❤️
+
+ขอบคุณที่คอยดูแลเค้ามาตลอด
+
+อยู่กับเค้าไปนานๆนะ
+
+รักนะ💕💐`;
+
+let i=0;
+
+function typeWriter(){
+
+if(i<message.length){
+
+document.getElementById("text").innerHTML+=message.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,60);
+
+}
+
+}
+
+let images=[
+"1.jpg",
+"2.jpg",
+"3.jpg",
+"4.jpg",
+"5.jpg"
+];
+
+let index=0;
+
+function startSlide(){
+
+setInterval(()=>{
+
+index++;
+
+if(index>=images.length){
+
+index=0;
+
+}
+
+document.getElementById("slide").src=images[index];
+
+},2500);
+
+}
+
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},6000);
+
+}
+
+</script>
+
+</body>
+</html>
